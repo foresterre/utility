@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
     # Zip file name
     fid = random.randint(100, 999)
-    zip_target_file = "".join(["dataset", "-", str(fid), ".zip"])
+    zip_target_file = "".join(["data", "-", str(fid), ".zip"])
 
     # Store all files in a zip (just to group them in one file)
     zipper = zipfile.ZipFile("".join([gen.output_location, "/", zip_target_file]), "w")
