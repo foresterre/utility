@@ -1,0 +1,29 @@
+# foresterre editorconfig
+# documentation from: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+#begin universal
+root = true
+
+[*]
+end_of_line = lf
+
+[*.java]
+
+charset = utf-8
+
+indent_style = space
+indent_size = 4
+
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+max_line_length = 120
+#end universal
+
+#begin domain specific (from the idea's section; thus no guaranties)
+curly_bracket_next_line = true
+spaces_around_operators = true
+spaces_around_brackets = both
+indent_brace_style = Allman
+continuation_indent_size = 8
+#end domain specific
