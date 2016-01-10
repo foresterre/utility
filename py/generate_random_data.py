@@ -1,4 +1,5 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python
+# or execute with py -3 generate_random_data.py [args]
 
 import os
 import os.path
