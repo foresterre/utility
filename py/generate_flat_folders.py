@@ -3,6 +3,8 @@
 
 import random, os
 
+# todo: separate console interaction from the generation of flat folders
+
 def single_level_folders(path, amount, name_len):
     """
     Generate #amount of folders in the path location.
@@ -72,15 +74,6 @@ def request_decimal_input(label="amount"):
         return request_decimal_input()
 
 
-# TODO add multiple folders down the tree
-# thus e.g.
-# now: folder x        suggested: folder x
-#                                   folder x.a  ((undefined) amount of sub folders)
-#                                   folder x.b
-#                                   folder x.c
-#      folder y                   folder y
-#                                   folder y.d
-#      folder z                   folder z
 def request_yesno(label="mult_folders"):
     """
     Requests input from the user until the stop condition is reached.
