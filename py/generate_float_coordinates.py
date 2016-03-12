@@ -36,10 +36,7 @@ def main():
     mini = 0.0000000000000000 # min inclusive
     maxe = 1.0000000000000001 # max exclusive
 
-    # Still writes the amount of coordinates generated
-    # Still tries to open the file (this could be better, but was not really required at the time of writing, nevertheless should be noted.)
-    WRITE_COORDINATES = True
-    PRINT_COORDINATES = False
+   PRINT_COORDINATES = False
 
     # ugly argument handling
     print(sys.argv)
@@ -54,7 +51,7 @@ def main():
         sys.exit(-1)
 
     if not str.isdecimal(sys.argv[1]):
-        print("wrong arg (req. int)")
+        print("wrong arg (requires decimal input)")
         sys.exit(-1)
 
 
@@ -64,7 +61,7 @@ def main():
     print("min: ", mini)
     print("max: ", maxe)
     if (mini > maxe):
-        print("Error: Max generated value is smaller than the min generated value!")
+        print("Error: Max generated value is smaller then the min generated value!")
         sys.exit(-2)
 
     set1 = set()
@@ -84,31 +81,28 @@ def main():
 
     print("result: len = ", l)
 
-    if WRITE_COORDINATES:
-        # clear file, append amount
-        with open(name, 'w') as f:
-            f.write(str(l))
-            f.write("\n")
+    # clear file, append amount
+    with open(name, 'w') as f:
+        f.write(str(l))
+        f.write("\n")
 
 
     # append each pop'ed coordinates
     # as noted above, the file is opened or created either way,
     # whether it is print only or not.
-    if WRITE_COORDINATES or PRINT_COORDINATES:
-        with open(name, 'a') as f:
-            for i in range(0, l):
-                item1 = str(set1.pop())
-                item2 = str(set2.pop())
+    with open(name, 'a') as f:
+        for i in range(0, l):
+            item1 = str(set1.pop())
+            item2 = str(set2.pop())
 
-                if PRINT_COORDINATES:
-                    print(item1, end=", ")
-                    print(item2)
+            if PRINT_COORDINATES:
+                print(item1, end=", ")
+                print(item2)
 
-                if WRITE_COORDINATES:
-                    f.write(item1)
-                    f.write(" ")
-                    f.write(item2)
-                    f.write("\n")
+            f.write(item1)
+            f.write(" ")
+            f.write(item2)
+            f.write("\n")
 
 
 
