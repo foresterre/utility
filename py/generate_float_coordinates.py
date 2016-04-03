@@ -8,7 +8,7 @@ def main():
     Each coordinate contains a X-axis and Y-axis floating point number (like in a 2D euclidean plane).
     Only one of each X and Y (in range(min, max)) coordinates can exist.
 
-    Execute with: py -3 floats.py [coordinates amount]
+    Execute with: py -3 generate_float_coordinates.py [coordinates amount]
 
     There are two sets, set1, set2.
     The [coordinates amount] stands for the amount of numbers which will be generated for each set.
@@ -47,11 +47,11 @@ def main():
         mini = float(sys.argv[2])
         maxe = float(sys.argv[3])
     elif len(sys.argv) != 2 and len(sys.argv) != 3 and len(sys.argv) != 5:
-        print("wrong args")
+        print("Error: Wrong arguments:\nUsage:\npython generate_float_coordinates.py [amount of coordinates]")
         sys.exit(-1)
 
     if not str.isdecimal(sys.argv[1]):
-        print("wrong arg (requires decimal input)")
+        print("Error: The first argument should be decimal.")
         sys.exit(-1)
 
 
@@ -61,7 +61,7 @@ def main():
     print("min: ", mini)
     print("max: ", maxe)
     if (mini > maxe):
-        print("Error: Max generated value is smaller then the min generated value!")
+        print("Error: The minimum input should be smaller compared to the maximum input")
         sys.exit(-2)
 
     set1 = set()
