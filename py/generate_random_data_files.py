@@ -49,7 +49,7 @@ class GenerateRandomData(object):
         Generates for amount=n_bytes random contents.
         This is splitted in x byte writes (purpose: not overloading memory)
 
-        TODO{foresterre}: Currently just returns all bytes at once (thus not like written above).
+        TODO{foresterre}: Currently just returns all bytes at once (thus should be implemented).
 
         """
         rand = self.generate_per_x_bytes(amount=self.n_bytes)
@@ -75,12 +75,13 @@ class GenerateRandomData(object):
     def write_file(self):
         """
         Writes the random content to a file.
-
-        TODO{foresterre}: This needs some more love.
-
-        TODO{foresterre}: sequentially write (like a stream).
-        TODO{foresterre}: Otherwise memory overflow might occur.
-
+        Does not guarantee to write with a file buffer.
+        
+        However, the data is appended to the file.
+        This means that the caller is responsible for calling with small enough amounts at once.
+        
+        This method is not thread safe.
+        
         """
         loc = self.get_full_file_path()
 
