@@ -1,6 +1,4 @@
 import os
-import json
-
 
 class Discovery(object):
 
@@ -32,8 +30,6 @@ class Discovery(object):
             for file_path in file_names:
                 self.file_list.append(os.path.join(clean_dir_path, file_path))
 
-    def to_json(self):
-        return json.dumps(self.file_list)
 
     def __repr__(self):
         return "Discovery[location={}]".format(self.location)
