@@ -1,15 +1,16 @@
 from bs4 import BeautifulSoup
 import os.path
+import sys
 
 def get_html_file_arg():
-    
+
     # get file path and validate file exists
     if len(sys.argv) >= 2:
-        html_file = sys.argv[2]
-        
-        if os.path.isfile(html_file): 
+        html_file = sys.argv[1]
+
+        if os.path.isfile(html_file):
             return html_file
-    
+
     print("Invalid or no argument: requires a valid path as the first argument.")
     exit(-1)
 
@@ -28,9 +29,9 @@ def naive_extract_table_with_span(page):
 
 
 if __name__ == '__main__':
-    
+
     file = get_html_file_arg()
-    
+
     with open(file) as page:
         r = naive_extract_table_with_span(page.read())
         print (r)
