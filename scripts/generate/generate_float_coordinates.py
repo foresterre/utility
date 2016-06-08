@@ -43,7 +43,7 @@ def main():
     if len(sys.argv) == 3:
         name = sys.argv[2]
         print("write to disk: ", sys.argv[2])
-    if len(sys.argv) == 4:
+    elif len(sys.argv) == 4:
         mini = float(sys.argv[2])
         maxe = float(sys.argv[3])
     elif len(sys.argv) != 2 and len(sys.argv) != 3 and len(sys.argv) != 5:
