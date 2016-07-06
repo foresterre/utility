@@ -26,16 +26,20 @@
 #
 
 $dirArgument = $args[0]
+$requiredArgumentStr = "The first argument should be an existing directory. Usage: ./Hash-FilesInFolder [directory]"
 
 # verify input information
 if ($dirArgument -eq $null) {
     Write-Host "Error, no argument provided!"
+    Write-Host $requiredArgumentStr
     Exit
 }
 
+# todo: this checks only for paths, not just directories!
 $dirTestPath = Test-Path $dirArgument
 if (-Not $dirTestPath) {
     Write-Host "Error, path not found!"
+    Write-Host $requiredArgumentStr
     Exit
 }
 
