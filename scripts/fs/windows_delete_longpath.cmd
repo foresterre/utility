@@ -1,4 +1,4 @@
 cd /
 mkdir empty
-robocopy /empty %1 /purge
+robocopy "/empty" %1 /purge
 rmdir empty
