@@ -21,9 +21,8 @@ max_line_length = 120
 #end universal
 
 #begin domain specific (from the idea section; thus no guarantees)
-curly_bracket_next_line = true
+curly_bracket_next_line = false
 spaces_around_operators = true
 spaces_around_brackets = both
-indent_brace_style = Allman
 continuation_indent_size = 8
 #end domain specific
