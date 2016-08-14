@@ -39,11 +39,11 @@ def random_text(length, chars="0123456789ABCDEF"):
     The characters used for the string are those defined as 'chars'.
     """
 
-    word = ""
+    word = []
     for i in range(length):
-        word += random.choice(chars)
+        word.append(random.choice(chars))
 
-    return word
+    return "".join(word)
 
 def request_path(label="path"):
     """
