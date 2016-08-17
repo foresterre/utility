@@ -35,17 +35,17 @@ if ($dirArgument -eq $null) {
     Exit
 }
 
-
-# config
-$outputFileName = "checksum.sha256"
-$outputFilePath = Join-Path -Path $dirArgument -ChildPath $outputFileName
-
 $dirTestPath = Test-Path $dirArgument
 if (-Not $dirTestPath) {
     Write-Host "Error, path not found!"
     Write-Host $requiredArgumentStr
     Exit
 } 
+
+
+# config
+$outputFileName = "checksum.sha256"
+$outputFilePath = Join-Path -Path $dirArgument -ChildPath $outputFileName
 
 
 # clean output
@@ -58,9 +58,9 @@ if ($outputFileExist) {
     Out-File $outputFileName 
 }
 
-# process input
-$dirFiles = Get-ChildItem $dirArgument -File
 
+# process input
+$dirFiles = Get-ChildItem $dirArgument -File | Where-Object { $_.Name -ne "checksum.sha256" }
 
 $dirFiles | ForEach-Object {
     $fPath = $_.FullName
