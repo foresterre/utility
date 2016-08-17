@@ -35,34 +35,42 @@ if ($dirArgument -eq $null) {
     Exit
 }
 
-# todo: this checks only for paths, not just directories!
+
+# config
+$outputFileName = "checksum.sha256"
+$outputFilePath = Join-Path -Path $dirArgument -ChildPath $outputFileName
+
 $dirTestPath = Test-Path $dirArgument
 if (-Not $dirTestPath) {
     Write-Host "Error, path not found!"
     Write-Host $requiredArgumentStr
     Exit
-}
+} 
 
-# config
-$outputFileName = "hashes.sha256"
-$outputFilePath = Join-Path -Path $dirArgument -ChildPath $outputFileName
 
 # clean output
 $outputFileExist = Test-Path $outputFilePath
 if ($outputFileExist) {
+    Write-Host "Output file 'checksum.sha256' does already exist, cleaning file..."
     Clear-Content $outputFilePath
+} else {
+    Write-Host "Created output file: 'checksum.sha256\'".
+    Out-File $outputFileName 
 }
 
 # process input
-$dirFiles = Get-ChildItem $dirArgument -File -Exclude *.sha256
+$dirFiles = Get-ChildItem $dirArgument -File
 
-$dirFiles | Foreach-Object {
+
+$dirFiles | ForEach-Object {
     $fPath = $_.FullName
     $hash = Get-FileHash $fPath -Algorithm SHA256
 
     $hashFmt = $hash.Hash
     $fNameFmt = $_.Name #Resolve-Path -Relative $fPath
     $resultFmt =  "$hashFmt $fNameFmt"
+
+    Write-Host "Appending hash: ", $resultFmt 
 
     $resultFmt | Out-File $outputFilePath -Append
 }
