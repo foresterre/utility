@@ -136,11 +136,16 @@ class GenerateRandomData(object):
     def gibibytes(self, amount_of_bytes):
         return amount_of_bytes * 1024**3
 
-
+# todo's:
+# + clean up
+# + command line arguments instead of __main__ execution
+# + replace zip with tar (since random binary data and zip compression are opposites; this just needs file grouping)
+# + remove unnecessary methods
+# + split bytes sizes off
 
 if __name__ == '__main__':
 
-    gen = GenerateRandomData(0, "D:/", "$__default__")
+    gen = GenerateRandomData(0, ".", "data.bin")
 
     # Zip file name
     fid = random.randint(100, 999)
@@ -151,7 +156,7 @@ if __name__ == '__main__':
 
     # Generate this amount of files with random data
     gen_this_amount_of_files = 100
-    gen_file_extension = ".rgd"
+    gen_file_extension = ".bin"
 
     # For each:
     #   Generate the random file
