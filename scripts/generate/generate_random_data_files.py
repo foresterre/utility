@@ -139,7 +139,6 @@ class GenerateRandomData(object):
 # todo's:
 # + clean up
 # + command line arguments instead of __main__ execution
-# + replace zip with tar (since random binary data and zip compression are opposites; this just needs file grouping)
 # + remove unnecessary methods
 # + split bytes sizes off
 
@@ -170,7 +169,7 @@ if __name__ == '__main__':
         gen.generate_bytes(stdout_print=False)
         gen.write_file()
 
-        zipper.write(gen.get_full_file_path(), gen.get_output_file_name(), zipfile.ZIP_DEFLATED)
+        zipper.write(gen.get_full_file_path(), gen.get_output_file_name(), zipfile.ZIP_STORED)
 
         gen.clean()
 
