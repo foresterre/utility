@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# or execute with py -3 generate_flat_folders.py
+# or execute with py -3 generate_flat_folders.py
 
 import random, os
 
